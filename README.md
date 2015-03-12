@@ -1,36 +1,43 @@
-# Vagrant Ghost
+# Vagrant::Ghost
 
-This is a fork of [vagrant-hostsupdater](/cogitatio/vagrant-hostsupdater).
+This plugin adds an entry to your /etc/hosts file on the host system.
+ 
+On **up**, **resume** and **reload** commands, it tries to add the information, if its not already in your hosts file. If it needs to be added, you will be asked for an administrator password, since it uses sudo to edit the file.
+ 
+On **halt**, **destroy**, and **suspend** those entries will be removed again.
+ 
+## Installation
+ 
+    $ vagrant plugin install vagrant-ghost
+ 
+Uninstall it with:
+ 
+    $ vagrant plugin uninstall vagrant-ghost
+ 
+## Usage
+ 
+At the moment, the only things you need, are the hostname and a :private_network network with a fixed ip.
+ 
+    config.vm.network :private_network, ip: "192.168.3.10"
+    config.vm.hostname = "www.testing.de"
+    config.hostsupdater.aliases = ["alias.testing.de", "alias2.somedomain.com"]
+ 
+This ip and the hostname will be used for the entry in the /etc/hosts file.
+ 
+##  Changelog
+ 
+### 0.1.0
+* Initial release
 
-To test/use this plugin:
+## Contributing
 
-```sh
-cd /path/to/moonshine/hostupdater
-sudo gem install bundler -v '1.7.13'
-bundle
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
 
-```
+## Credits
 
-This will install all the dependencies for this package and enable you to run vagrant with this plugin temporarily active.
-
-After you've run the commands above, test with Vagrant by running vagrant commands prefixed with `bundle exec` from the `hostupdater` directory. For example:
-
-```sh
-bundle exec vagrant up
-bundle exec vagrant halt
-```
-
-You can also manually trigger a host file update:
-
-```
-bundle exec vagrant ghost
-```
-
-If your VM is running, it will add the hosts to the hosts file. If it's not running, it will remove the hosts from the hosts file.
-
-To add a host to your hosts file, you can specify hosts in your Vagrantfile:
-
-```rb
-config.vm.hostname = 'test.dev'
-config.ghost.aliases = ['www.test.dev', 'foo.test.dev']
+This is a fork of [vagrant-hostsupdater](https://github.com/cogitatio/vagrant-hostsupdater).
 ```
