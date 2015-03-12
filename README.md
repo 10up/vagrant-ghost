@@ -1,6 +1,6 @@
-# Moonshine Hostupdater
+# Vagrant Ghost
 
-This is a fork of [vagrant-hostsupdater](/cogitatio/vagrant-hostsupdater). For now, it is only for use in development.
+This is a fork of [vagrant-hostsupdater](/cogitatio/vagrant-hostsupdater).
 
 To test/use this plugin:
 
@@ -23,14 +23,14 @@ bundle exec vagrant halt
 You can also manually trigger a host file update:
 
 ```
-bundle exec vagrant moonshineupdater
+bundle exec vagrant ghost
 ```
 
-If your VM is running, it will add the hosts to the hostfile. If it's not running, it will remove the hosts from the hostsfile.
+If your VM is running, it will add the hosts to the hosts file. If it's not running, it will remove the hosts from the hosts file.
 
-To add a host to your hostsfile, you can specify hosts in your Vagrantfile:
+To add a host to your hosts file, you can specify hosts in your Vagrantfile:
 
 ```rb
 config.vm.hostname = 'test.dev'
-config.moonshineupdater.aliases = ['www.test.dev', 'foo.test.dev']
+config.ghost.aliases = ['www.test.dev', 'foo.test.dev']
 ```

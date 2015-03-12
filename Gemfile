@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in vagrant-moonshineupdater.gemspec
+# Specify your gem's dependencies in vagrant-ghost.gemspec
 gemspec
 
 group :development do
@@ -8,5 +8,5 @@ group :development do
 end
 
 group :plugins do
-  gem "vagrant-moonshineupdater", path: "."
+  gem "vagrant-ghost", path: "."
 end
