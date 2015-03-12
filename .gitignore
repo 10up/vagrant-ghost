@@ -1,1 +1,7 @@
+*gem
+.bindle
+.config
+Gemfile.lock
+doc
+pkg
 .idea
