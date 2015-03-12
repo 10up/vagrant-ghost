@@ -1,6 +1,6 @@
 module VagrantPlugins
-	module MoonshineUpdater
-		module MoonshineUpdater
+	module Ghost
+		module Ghost
 			@@hosts_path = Vagrant::Util::Platform.windows? ? File.expand_path('system32/drivers/etc/hosts', ENV['windir']) : '/etc/hosts'
 
 			def getIps
@@ -24,8 +24,8 @@ module VagrantPlugins
 
 			def getHostnames
 				hostnames = Array(@machine.config.vm.hostname)
-				if @machine.config.moonshineupdater.aliases
-					hostnames.concat(@machine.config.moonshineupdater.aliases)
+				if @machine.config.ghost.aliases
+					hostnames.concat(@machine.config.ghost.aliases)
 				end
 				return hostnames
 			end
@@ -52,17 +52,17 @@ module VagrantPlugins
 			end
 
 			def cacheHostEntries
-				@machine.config.moonshineupdater.id = @machine.id
+				@machine.config.ghost.id = @machine.id
 			end
 
 			def removeHostEntries
-				if !@machine.id and !@machine.config.moonshineupdater.id
+				if !@machine.id and !@machine.config.ghost.id
 					@ui.warn "No machine id, nothing removed from #@@hosts_path"
 					return
 				end
 				file = File.open(@@hosts_path, "rb")
 				hostsContents = file.read
-				uuid = @machine.id || @machine.config.moonshineupdater.id
+				uuid = @machine.id || @machine.config.ghost.id
 				hashedId = Digest::MD5.hexdigest(uuid)
 				if hostsContents.match(/#{hashedId}/)
 						removeFromHosts
@@ -95,7 +95,7 @@ module VagrantPlugins
 			end
 
 			def removeFromHosts(options = {})
-				uuid = @machine.id || @machine.config.moonshineupdater.id
+				uuid = @machine.id || @machine.config.ghost.id
 				hashedId = Digest::MD5.hexdigest(uuid)
 				if !File.writable?(@@hosts_path)
 					sudo(%Q(sed -i -e '/#{hashedId}/ d' #@@hosts_path))

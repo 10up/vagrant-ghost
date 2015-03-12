@@ -1,8 +1,8 @@
 module VagrantPlugins
-	module MoonshineUpdater
+	module Ghost
 		module Action
 			class CacheHosts
-				include MoonshineUpdater
+				include Ghost
 
 				def initialize(app, env)
 					@app = app

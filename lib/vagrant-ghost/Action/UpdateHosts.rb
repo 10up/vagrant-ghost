@@ -1,9 +1,9 @@
-require_relative "../MoonshineUpdater"
+require_relative "../Ghost"
 module VagrantPlugins
-	module MoonshineUpdater
+	module Ghost
 		module Action
 			class UpdateHosts
-				include MoonshineUpdater
+				include Ghost
 
 
 				def initialize(app, env)

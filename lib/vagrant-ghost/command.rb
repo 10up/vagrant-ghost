@@ -1,12 +1,12 @@
 module VagrantPlugins
-	module MoonshineUpdater
+	module Ghost
 		class Command < Vagrant.plugin('2', :command)
-			include MoonshineUpdater
+			include Ghost
 
 			def execute
 				options = {}
 				opts = OptionParser.new do |o|
-					o.banner = 'Usage: vagrant hostmanager [vm-name]'
+					o.banner = 'Usage: vagrant ghost [vm-name]'
 					o.separator ''
 
 					o.on('--provider provider', String, 'Update machines with the specific provider.') do |provider|
