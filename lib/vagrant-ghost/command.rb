@@ -3,6 +3,10 @@ module VagrantPlugins
 		class Command < Vagrant.plugin('2', :command)
 			include Ghost
 
+			def self.synopsis
+				'manages hosts files internally and externally'
+			end
+
 			def execute
 				options = {}
 				opts = OptionParser.new do |o|

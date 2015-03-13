@@ -44,7 +44,7 @@ module VagrantPlugins
 				hook.append(Action::UpdateHosts)
 			end
 
-			command(:ghost, primary: false) do
+			command(:ghost, primary: true) do
 				require_relative 'command'
 				Command
 			end
