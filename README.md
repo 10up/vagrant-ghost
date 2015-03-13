@@ -1,5 +1,7 @@
 # Vagrant::Ghost
 
+[![Gem Version](https://badge.fury.io/rb/vagrant-ghost.svg)](http://badge.fury.io/rb/vagrant-ghost)
+
 This plugin adds an entry to your /etc/hosts file on the host system.
  
 On **up**, **resume** and **reload** commands, it tries to add the information, if its not already in your hosts file. If it needs to be added, you will be asked for an administrator password, since it uses sudo to edit the file.
