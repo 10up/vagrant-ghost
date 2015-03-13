@@ -27,7 +27,11 @@ At the moment, the only things you need, are the hostname and a :private_network
 This ip and the hostname will be used for the entry in the /etc/hosts file.
  
 ##  Changelog
- 
+
+### 0.1.1
+* Update the CLI to a "primary" command
+* Make sure help doesn't try to fire a host update
+
 ### 0.1.0
 * Initial release
 
