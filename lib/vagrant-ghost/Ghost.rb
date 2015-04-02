@@ -33,7 +33,7 @@ module VagrantPlugins
 				end.flatten.uniq
 
 				# Pull in managed aliases
-				local = Dir[File.join( '**', 'hostsalias' )]
+				local = Dir[File.join( '**', 'aliases' )]
 				local_hosts = local.map do |path|
 					lines = File.readlines(path).map(&:chomp)
 					lines.grep(/\A[^#]/)
