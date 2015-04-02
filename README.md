@@ -22,11 +22,14 @@ At the moment, the only things you need, are the hostname and a :private_network
  
     config.vm.network :private_network, ip: "192.168.3.10"
     config.vm.hostname = "www.testing.de"
-    config.hostsupdater.aliases = ["alias.testing.de", "alias2.somedomain.com"]
+    config.ghost.aliases = ["alias.testing.de", "alias2.somedomain.com"]
  
 This ip and the hostname will be used for the entry in the /etc/hosts file.
  
 ##  Changelog
+
+### 0.1.2
+* Make the CLI command scan a local hosts setup files (`/config/hosts` and `/aliases`) to rebuild the hosts map
 
 ### 0.1.1
 * Update the CLI to a "primary" command
