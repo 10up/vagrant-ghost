@@ -24,9 +24,32 @@ module VagrantPlugins
 
 			def getHostnames
 				hostnames = Array(@machine.config.vm.hostname)
+
+				# Regenerate hostsfile
+				paths = Dir[File.join( 'config', '**', 'hosts' )]
+				hosts = paths.map do |path|
+					lines = File.readlines(path).map(&:chomp)
+					lines.grep(/\A[^#]/)
+				end.flatten.uniq
+
+				# Pull in managed aliases
+				local = Dir[File.join( '**', 'hostsalias' )]
+				local_hosts = local.map do |path|
+					lines = File.readlines(path).map(&:chomp)
+					lines.grep(/\A[^#]/)
+				end.flatten.uniq
+
+				# Merge our lists together
+				aliases = ( hosts << local_hosts ).flatten!
+
+				# Concat with the local hostname
+				hostnames.concat( aliases )
+
+				# Update the achine configuration
 				if @machine.config.ghost.aliases
-					hostnames.concat(@machine.config.ghost.aliases)
+					@machine.config.ghost.aliases = aliases
 				end
+
 				return hostnames
 			end
 
