@@ -26,21 +26,11 @@ module VagrantPlugins
 				hostnames = Array(@machine.config.vm.hostname)
 
 				# Regenerate hostsfile
-				paths = Dir[File.join( 'config', '**', 'hosts' )]
-				hosts = paths.map do |path|
+				paths = Dir[File.join( '**', 'aliases' )]
+				aliases = paths.map do |path|
 					lines = File.readlines(path).map(&:chomp)
 					lines.grep(/\A[^#]/)
 				end.flatten.uniq
-
-				# Pull in managed aliases
-				local = Dir[File.join( '**', 'aliases' )]
-				local_hosts = local.map do |path|
-					lines = File.readlines(path).map(&:chomp)
-					lines.grep(/\A[^#]/)
-				end.flatten.uniq
-
-				# Merge our lists together
-				aliases = ( hosts << local_hosts ).flatten!
 
 				# Concat with the local hostname
 				hostnames.concat( aliases )
