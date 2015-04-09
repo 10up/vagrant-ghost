@@ -35,7 +35,7 @@ Additional aliases can be added by creating an `/aliases` file at the root of th
 * Update documentation
 
 ### 0.1.3
-* Consoldiate `/config/hosts` and `/aliases` to just `/**/aliases`
+* Consolidate `/config/hosts` and `/aliases` to just `/**/aliases`
 
 ### 0.1.2
 * Make the CLI command scan a local hosts setup files (`/config/hosts` and `/aliases`) to rebuild the hosts map
