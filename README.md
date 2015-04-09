@@ -22,11 +22,17 @@ At the moment, the only things you need, are the hostname and a :private_network
  
     config.vm.network :private_network, ip: "192.168.3.10"
     config.vm.hostname = "www.testing.de"
-    config.ghost.aliases = ["alias.testing.de", "alias2.somedomain.com"]
+    config.ghost.hosts = ["alias.testing.de", "alias2.somedomain.com"]
  
 This ip and the hostname will be used for the entry in the /etc/hosts file.
+
+Additional aliases can be added by creating an `/aliases` file at the root of the Vagrant machine installation with one host alias per line. This file will be re-imported whenever Vagrant Ghost updates the hostsfile.
  
 ##  Changelog
+
+### 0.2.0
+* Use `ghost.config.hosts` to set static hosts while pulling dynamic ones from an `/aliases` file
+* Update documentation
 
 ### 0.1.3
 * Consoldiate `/config/hosts` and `/aliases` to just `/**/aliases`
