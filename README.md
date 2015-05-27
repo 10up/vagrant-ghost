@@ -30,6 +30,9 @@ Additional aliases can be added by creating an `/aliases` file at the root of th
  
 ##  Changelog
 
+### 0.2.1
+* Make the search for `aliases` target the VM's root directory
+
 ### 0.2.0
 * Use `ghost.config.hosts` to set static hosts while pulling dynamic ones from an `/aliases` file
 * Update documentation
