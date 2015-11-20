@@ -25,8 +25,10 @@ module VagrantPlugins
 			def getHostnames
 				hostnames = Array(@machine.config.vm.hostname)
 
+				hosts_files = @machine.config.ghost.hosts_files || 'aliases'
+
 				# Regenerate hosts from aliases file
-				paths = Dir[File.join( @machine.env.root_path.to_s, '**', 'aliases' )]
+				paths = Dir[File.join( @machine.env.root_path.to_s, '**', hosts_files )]
 				aliases = paths.map do |path|
 					lines = File.readlines(path).map(&:chomp)
 					lines.grep(/\A[^#]/)
