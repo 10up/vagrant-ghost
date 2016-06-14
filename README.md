@@ -27,8 +27,18 @@ At the moment, the only things you need, are the hostname and a :private_network
 This ip and the hostname will be used for the entry in the /etc/hosts file.
 
 Additional aliases can be added by creating an `/aliases` file at the root of the Vagrant machine installation with one host alias per line. This file will be re-imported whenever Vagrant Ghost updates the hostsfile.
- 
+
+You may change the name of the aliases file by setting the `hosts_files` configuration option in your Vagrantfile:
+
+    config.ghost.hosts_files = "hosts_aliases" # Could be anything, e.g. "hosts", or whatever
+
+This will scan the vagrant directory for any file with the name you configured and will use each line as a URI to add to your hosts file pointing to that vagrant instance.
+
 ##  Changelog
+
+### 0.2.2
+* Only parse files for host names, not directories
+* Add a configuration option `hosts_files` to change the name of the file that holds aliases
 
 ### 0.2.1
 * Make the search for `aliases` target the VM's root directory
