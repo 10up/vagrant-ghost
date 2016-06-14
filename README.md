@@ -36,6 +36,9 @@ This will scan the vagrant directory for any file with the name you configured a
 
 ##  Changelog
 
+### 0.2.3
+* Fixed allowed_push_host setting to allow pushing to rubygems.org
+
 ### 0.2.2
 * Only parse files for host names, not directories
 * Add a configuration option `hosts_files` to change the name of the file that holds aliases
