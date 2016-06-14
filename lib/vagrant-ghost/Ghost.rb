@@ -28,8 +28,10 @@ module VagrantPlugins
 				# Regenerate hosts from aliases file
 				paths = Dir[File.join( @machine.env.root_path.to_s, '**', 'aliases' )]
 				aliases = paths.map do |path|
-					lines = File.readlines(path).map(&:chomp)
-					lines.grep(/\A[^#]/)
+					if File.file?(path)
+						lines = File.readlines(path).map(&:chomp)
+						lines.grep(/\A[^#]/)
+					end
 				end.flatten.uniq
 
 				# Concat with the local hostname
